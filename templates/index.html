@@ -7,9 +7,10 @@
 </head>
 <body>
     <div class=Title>
-       <h1>API</h1> 
+       <h1>Lista de Pedidos</h1> 
     </div>
 
+    <div class="table1">
       <table class="table">
         <thead>
           <tr>
@@ -21,16 +22,49 @@
         </thead>
         <tbody>
           
-            {% for item in tabela %}
+            {% for pedido in lista %}
               <tr>
-                {% for i in item.values() %}
-                  <td>{{i}}</td>
+                {% for dados in pedido.values() %}
+                  <td><a href="https://www.google.com">{{dados}}</a></td>
                 {% endfor %}
               </tr>
             {% endfor %}
             
         </tbody>
       </table>
+    </div>
+
+    <h1>Informações do Pedido</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            {% for pedido in pedidos %}
+              <tr>
+                {% for dado in pedido.values() %}
+                  <td>{{loop.index}}</td>
+                  <td>{{dado}}</td>
+                {% endfor %}
+
+              </tr>
+
+            {% endfor %}
+            
+        </tbody>
+      </table>
+    </div>
+    <form method="post" action="/">
+      <button type="submit" name="submit_button" value="Do Something" class="btn btn-primary">Submit</button>
+    </form>
+    
 
 
     <!-- JavaScript Bundle with Popper -->

@@ -1,55 +1,55 @@
 import requests
-import pandas
 
-#==========Clientes
+def get_lista_pedidos():
+    urlClientes = 'https://sistemalift1.com/lift_ps/api/Clientes'
+    urlPedidos = 'https://sistemalift1.com/lift_ps/api/Pedidos'
+    urlProdutos = 'https://sistemalift1.com/lift_ps/api/Produtos'
+    urlItens = 'https://sistemalift1.com/lift_ps/api/ItensPedido'
 
-urlClientes = 'https://sistemalift1.com/lift_ps/api/Clientes'
-clientes = requests.get(urlClientes).json()
+    clientes = requests.get(urlClientes).json()
+    pedidos = requests.get(urlPedidos).json()
+    produtos = requests.get(urlProdutos).json()
+    itens = requests.get(urlItens).json()
 
-listaNomeClientes = [cliente['nome'] for cliente in clientes]
+    listaClientes = [cliente['nome'] for cliente in clientes]
+    listaPedidos = [pedido['cliente'] for pedido in pedidos]
+    listaData = [pedido['data'] for pedido in pedidos]
+    listaPedidosFinal = []
 
-for i in range(len(listaNomeClientes)):
-    ide = i + 1
-    print(ide, listaNomeClientes[ide - 1])
+    for i in range(len(itens)):
+        row = {}
+        row['código'] = itens[i]['pedido']
+        row['cliente'] = clientes[pedidos[itens[i]['pedido'] - 1]['cliente'] - 1]['nome']
+        row['data'] = pedidos[itens[i]['pedido'] - 1]['data']
+        row['valor'] = produtos[itens[i]['produto'] - 1]['valor'] * itens[i]['quantidade']
+        listaPedidosFinal.append(row)
 
+    return listaPedidosFinal
 
+def get_info_pedidos():
 
-#=========Produtos
+    urlClientes = 'https://sistemalift1.com/lift_ps/api/Clientes'
+    urlPedidos = 'https://sistemalift1.com/lift_ps/api/Pedidos'
+    urlProdutos = 'https://sistemalift1.com/lift_ps/api/Produtos'
+    urlItens = 'https://sistemalift1.com/lift_ps/api/ItensPedido'
 
-urlProdutos = 'https://sistemalift1.com/lift_ps/api/Produtos'
-produtos = requests.get(urlProdutos).json()
-# idProduto =
+    clientes = requests.get(urlClientes).json()
+    pedidos = requests.get(urlPedidos).json()
+    produtos = requests.get(urlProdutos).json()
+    itens = requests.get(urlItens).json()
 
+    listaClientes = [cliente['nome'] for cliente in clientes]
+    listaPedidos = [pedido['cliente'] for pedido in pedidos]
+    listaData = [pedido['data'] for pedido in pedidos]
+    infoPedidos = []
+    for i in range(len(itens)):
+        row = {}
+        row['código'] = itens[i]['pedido']
+        # row['cliente'] = clientes[pedidos[itens[i]['pedido'] - 1]['cliente'] - 1]['nome']
+        # row['data'] = pedidos[itens[i]['pedido'] - 1]['data']
+        row['produto'] = produtos[itens[i]['produto'] - 1]['nome']
+        row['quantidade'] = itens[i]['quantidade']
+        row['valor'] = produtos[itens[i]['produto'] - 1]['valor'] * itens[i]['quantidade']
+        infoPedidos.append(row)
 
-
-
-
-#=======Items Pedido
-
-urlItensPedido = 'https://sistemalift1.com/lift_ps/api/ItensPedido'
-itensPedido = requests.get(urlItensPedido).json()
-
-
-
-#======Pedido
-
-urlPedido = 'https://sistemalift1.com/lift_ps/api/Pedido'
-pedido = requests.get(urlPedido).json()
-
-
-# for cliente in clientes:
-#     for key, value in cliente.items():
-#         print(key, value, end=" ")
-#     print()
-
-# print (getattr(clientes,'name')) 
-
-
-#            0                        1                     2                   3                           4                             5                             6                       7
-# ['Vitória Luzia da Rocha', 'Yuri Arthur Sales', 'Sérgio Theo Galvão', 'Cláudia Emilly Monteiro', 'Bernardo Kaique Souza', 'Elaine Helena Jennifer da Rosa', 'Malu Tereza Duarte', 'Isadora Giovanna Assis']
-
-"""
-PEDIDO  CLIENTE    DATA   VALOR
-1       ariel     05/06   200.00
-2       
-"""
+    return infoPedidos
