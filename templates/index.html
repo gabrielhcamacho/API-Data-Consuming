@@ -22,12 +22,13 @@
         <tbody>
           
             {% for item in tabela %}
-            <tr></tr>
-            {% for i in item.values() %}
-              <td>{{i}}</td>
+              <tr>
+                {% for i in item.values() %}
+                  <td>{{i}}</td>
+                {% endfor %}
+              </tr>
             {% endfor %}
-            {% endfor %}
-         
+            
         </tbody>
       </table>
 
