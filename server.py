@@ -11,8 +11,8 @@ def home():
         pedidos = get_info_pedidos()
         return render_template("index.html", lista=lista, pedidos=pedidos)
     else:
-        if request.form['submit_button'] == 'Do Something':
-            return redirect('/1')
+        # if request.form['submit_button'] == '0':
+        return redirect(f"/{request.form['submit_button']}")
 
 
 
