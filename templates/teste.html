@@ -8,11 +8,9 @@
 </head>
 <body>
     <div class=Title>
+        <h1>Informações do Pedido</h1>
     </div>
-
-
-    <h1>Informações do Pedido</h1>
-
+    
       <table class="table">
         <thead>
           <tr>
@@ -30,14 +28,37 @@
                 <td>{{pedido['quantidade']}}</td>
                 <td>{{pedido['valor']}}</td>
             </tr>
-            <tr>
-                <td>Valor total: {{pedido['quantidade'] * pedido['valor']}}</td> 
-            </tr>
-            
-            
-            
         </tbody>
       </table>
+      
+      <div class="vTotal">
+            <h6><strong>Valor total:</strong> {{pedido['quantidade'] * pedido['valor']}}</h6> 
+      </div>
+      
+    </div>
+
+    <div class=Title>
+        <h1>Informações do Cliente</h1>
+    </div>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Data</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+                <td>{{cliente['nome']}}</td>
+                <td>{{cliente['cpf']}}</td>
+                <td>{{cliente['data']}}</td>
+                <td>{{cliente['email']}}</td>
+            </tr>
+        </tbody>
+      </table>
+      
     </div>
 
     

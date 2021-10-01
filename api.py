@@ -52,3 +52,26 @@ def get_info_pedidos():
         infoPedidos.append(row)
 
     return infoPedidos
+
+
+def get_info_clientes():
+    urlClientes = 'https://sistemalift1.com/lift_ps/api/Clientes'
+    urlPedidos = 'https://sistemalift1.com/lift_ps/api/Pedidos'
+    urlProdutos = 'https://sistemalift1.com/lift_ps/api/Produtos'
+    urlItens = 'https://sistemalift1.com/lift_ps/api/ItensPedido'
+
+    clientes = requests.get(urlClientes).json()
+    pedidos = requests.get(urlPedidos).json()
+    produtos = requests.get(urlProdutos).json()
+    itens = requests.get(urlItens).json()
+
+    dadosCliente = []
+    for i in range(len(pedidos)):
+        row = {}
+        row['nome'] = clientes[pedidos[i]['cliente'] - 1]['nome']
+        row['cpf'] = clientes[pedidos[i]['cliente'] - 1]['cpf']
+        row['data'] = pedidos[i]['data']
+        row['email'] = clientes[pedidos[i]['cliente'] - 1]['email']
+        dadosCliente.append(row)
+
+    return dadosCliente

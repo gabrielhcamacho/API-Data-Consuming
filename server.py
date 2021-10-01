@@ -18,8 +18,10 @@ teste = get_info_pedidos()
 
 @app.route('/<int:pedidos>', methods=['GET', 'POST'])
 def pedidos(pedidos):
+    cliente = get_info_clientes()
     pedido = teste[pedidos]
-    return render_template("teste.html", pedido=pedido)
+    return render_template("teste.html", pedido=pedido, cliente=cliente)
+    
 
 if __name__ == '__main__':
     app.run()
