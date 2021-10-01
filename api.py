@@ -21,13 +21,12 @@ def get_lista_pedidos():
         row['código'] = itens[i]['pedido']
         row['cliente'] = clientes[pedidos[itens[i]['pedido'] - 1]['cliente'] - 1]['nome']
         row['data'] = pedidos[itens[i]['pedido'] - 1]['data']
-        row['valor'] = produtos[itens[i]['produto'] - 1]['valor'] * itens[i]['quantidade']
+        row['valor'] = produtos[itens[i]['produto'] - 1]['valor']
         listaPedidosFinal.append(row)
 
     return listaPedidosFinal
 
 def get_info_pedidos():
-
     urlClientes = 'https://sistemalift1.com/lift_ps/api/Clientes'
     urlPedidos = 'https://sistemalift1.com/lift_ps/api/Pedidos'
     urlProdutos = 'https://sistemalift1.com/lift_ps/api/Produtos'
@@ -49,7 +48,7 @@ def get_info_pedidos():
         # row['data'] = pedidos[itens[i]['pedido'] - 1]['data']
         row['produto'] = produtos[itens[i]['produto'] - 1]['nome']
         row['quantidade'] = itens[i]['quantidade']
-        row['valor'] = produtos[itens[i]['produto'] - 1]['valor'] * itens[i]['quantidade']
+        row['valor'] = produtos[itens[i]['produto'] - 1]['valor']
         infoPedidos.append(row)
 
     return infoPedidos

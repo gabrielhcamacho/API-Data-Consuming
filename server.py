@@ -11,16 +11,15 @@ def home():
         pedidos = get_info_pedidos()
         return render_template("index.html", lista=lista, pedidos=pedidos)
     else:
-        # if request.form['submit_button'] == '0':
         return redirect(f"/{request.form['submit_button']}")
-
 
 
 teste = get_info_pedidos()
 
 @app.route('/<int:pedidos>', methods=['GET', 'POST'])
 def pedidos(pedidos):
-    return teste[pedidos]
+    pedido = teste[pedidos]
+    return render_template("teste.html", pedido=pedido)
 
 if __name__ == '__main__':
     app.run()
