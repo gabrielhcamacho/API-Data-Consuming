@@ -24,7 +24,6 @@ h1{
 .vTotal{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    margin-right: 100px;
+    margin-right: 150px;
     background-color: transparent;
 }

@@ -20,7 +20,7 @@ teste = get_info_pedidos()
 def pedidos(pedidos):
     cliente = get_info_clientes()
     pedido = teste[pedidos]
-    return render_template("teste.html", pedido=pedido, cliente=cliente)
+    return render_template("teste.html", pedido=pedido, cliente=cliente[pedidos])
     
 
 if __name__ == '__main__':
