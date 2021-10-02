@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class=Title>
-        <h1>Informações do Pedido</h1>
+    <div class=Title class="row justify-content-between">
+        <h1 class="col-4">Informações do Pedido</h1>
+        <h4 class="col-4">Id: {{pedido['código']}}</h4>
     </div>
     
       <table class="table">
@@ -32,7 +33,7 @@
       </table>
       
       <div class="vTotal">
-            <h6><strong>Valor total:</strong> {{pedido['quantidade'] * pedido['valor']}}</h6> 
+            <h6><strong>Valor total: $</strong> {{pedido['quantidade'] * pedido['valor']}}</h6> 
       </div>
       
     </div>

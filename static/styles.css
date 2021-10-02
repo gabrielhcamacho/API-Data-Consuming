@@ -2,13 +2,15 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    display: flex;
 }
 
-h1{
+h1, h4{
     font-size: 60px;
     text-align: center;
     color:#377DFF;
-    font-family: Helvetica, Arial, sans-serif
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 30;
 }
 
 
@@ -25,5 +27,6 @@ h1{
     width: 100%;
     display: flex;
     margin-right: 150px;
-    background-color: transparent;
+    justify-content: flex-end;
+    margin-right: 40px;
 }

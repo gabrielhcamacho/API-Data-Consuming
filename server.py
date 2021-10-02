@@ -3,6 +3,7 @@ import requests
 from api import *
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -20,7 +21,14 @@ teste = get_info_pedidos()
 def pedidos(pedidos):
     cliente = get_info_clientes()
     pedido = teste[pedidos]
-    return render_template("teste.html", pedido=pedido, cliente=cliente[pedidos])
+    lista = get_lista_pedidos()
+    itens = get_items()
+    clientes = get_clientes()
+    pedi = get_pedidos()
+    pessoa = clientes[pedi[itens[pedidos]['pedido'] - 1]['cliente'] - 1]
+    pessoa['data'] = pedi[itens[pedidos]['pedido'] - 1]['data']
+    return render_template("pedidos.html", pedido=pedido, cliente=pessoa)
+
     
 
 if __name__ == '__main__':
