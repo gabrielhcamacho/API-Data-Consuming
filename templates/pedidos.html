@@ -27,13 +27,13 @@
                 <td>{{pedido['código']}}</td>
                 <td>{{pedido['produto']}}</td>
                 <td>{{pedido['quantidade']}}</td>
-                <td>{{pedido['valor']}}</td>
+                <td>R$ {{pedido['valor']}}</td>
             </tr>
         </tbody>
       </table>
       
       <div class="vTotal">
-            <h6><strong>Valor total: $</strong> {{pedido['quantidade'] * pedido['valor']}}</h6> 
+            <h6><strong>Valor total: R$</strong> {{pedido['quantidade'] * pedido['valor']}}</h6> 
       </div>
       
     </div>

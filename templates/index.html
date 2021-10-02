@@ -26,9 +26,10 @@
             {% for pedido in lista %}
               <tr>
                 {% set index = loop.index - 1 %}
-                {% for dado in pedido.values() %}
-                <td><form method="post" action="/"><button type="submit" name="submit_button" value={{index}} class="mybutton">{{dado}}</button></form></td>
-                {% endfor %}
+                <td><form method="post" action="/"><button type="submit" name="submit_button" value={{index}} class="mybutton">{{pedido['código']}}</button></form></td>
+                <td><form method="post" action="/"><button type="submit" name="submit_button" value={{index}} class="mybutton">{{pedido['cliente']}}</button></form></td>
+                <td>{{pedido['data']}}</td>
+                <td>R$ {{pedido['valor']}}</td>
               </tr>
             {% endfor %}
             
